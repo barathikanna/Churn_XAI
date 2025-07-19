@@ -12,7 +12,7 @@
       - Natural language reviews (`complaint_text`) generated from causal variables
 
     - The data is causally valid: `loyalty_score` influences both treatment and outcome.
-    - The outcome (`churned`) was simulated using a do-calculus-inspired process, not conditional probability.
+    - The outcome (`churned`) was simulated using a do-calculus inspired process, not conditional probability.
 
     > Code: See `dataset.ipynb`
 
@@ -20,9 +20,9 @@
 
 ## 1.2. Causal Estimation with DoWhy
     - Used `dowhy` to:
-    - Identify the **Average Treatment Effect (ATE)** of `discount_offer` on `churned`
-    - Adjust for confounding using **backdoor criterion**
-    - Refute the estimate with a **placebo treatment test**
+    - Identify the Average Treatment Effect (ATE) of `discount_offer` on `churned`
+    - Adjust for confounding using backdoor criterion
+    - Refute the estimate with a placebo treatment test
 
         ### Key Output:
         Estimated ATE: -0.1849
