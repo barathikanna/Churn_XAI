@@ -30,7 +30,7 @@
         Placebo Effect: -0.00178 (non-significant)
     > causal effect is robust and not due to random correlations.
 
-    > Code: See `dataset.ipynb`
+    > Code: See `DoWhy.ipynb`
 
 
 # 2. ML Model for churn prediction: 
