@@ -32,9 +32,10 @@
 
     > Code: See `dataset.ipynb`
 
-#2. ML Model for churn prediction: 
 
-## 2.1Linear Regression Model for DiCE (Structured data only)
+# 2. ML Model for churn prediction: 
+
+## 2.1 Linear Regression Model for DiCE (Structured data only)
     - Trained an interpretable model using only structured features (DiCE-compatible)
     - Included `class_weight='balanced'` to handle imbalance
     - Evaluated on accuracy, precision, recall, F1, and ROC AUC
