@@ -1,7 +1,7 @@
 # 1. synthetic dataset generation and causal estimation validation using DoWhy
 - This project demonstrates a complete pipeline for generating a synthetic customer churn dataset with known causal structure, estimating the treatment effect using DoWhy, and training interpretable models for churn prediction.
 
-## 🔨 1.1. Synthetic Dataset Generation
+## 1.1. Synthetic Dataset Generation
 
     - Created a synthetic dataset of 10,000 customers with the following features:
       - `age`, `gender`, `visits_last_month`, `avg_purchase_value`
@@ -53,4 +53,6 @@
     > Accuracy dropped but recall improved dramatically
 
     > Code: See `LR_DiCE.ipynb`
+    
+## 2.2 XGBoost
 
