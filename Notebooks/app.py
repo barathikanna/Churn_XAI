@@ -11,9 +11,9 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="Customer Churn Dashboard", layout="wide")
 st.title("Customer Churn Prediction & Counterfactual Analysis")
 
-# --------------------------
+
 # Load Data
-# --------------------------
+
 @st.cache_data
 def load_data():
     df = pd.read_csv(r"D:\Churn_project\Latest\causal_discount_churn_DAG_clean.csv")
@@ -35,9 +35,9 @@ df, cf_df, X_train_raw = load_data()
 
 flipper_ids = cf_df.loc[cf_df["is_best_feasible"] == 1, "customer_id"].unique().tolist()
 
-# --------------------------
+
 # Load Model
-# --------------------------
+
 @st.cache_resource
 def load_model_and_processed():
     with open(r"D:\Churn_project\Latest\xgb_pipeline.pkl", "rb") as f:
@@ -58,14 +58,14 @@ model_features = [
     'gender', 'preferred_payment', 'preferred_category', 'review_text'
 ]
 
-# --------------------------
+
 # Sidebar Navigation
-# --------------------------
+
 page = st.sidebar.radio("Select Page", ["Summary", "Individual Customers"])
 
-# ==============================================================
+
 # PAGE 1: SUMMARY
-# ==============================================================
+
 if page == "Summary":
     st.header("Overall Summary")
     
@@ -98,14 +98,14 @@ if page == "Summary":
     st.pyplot(plt.gcf())
     plt.clf()
     
-    # Possible Fixes Table
+    
     st.subheader("Possible Fixes (Feasible Counterfactuals)")
     possible_fixes = cf_df[cf_df["is_feasible"] == 1]
     st.dataframe(possible_fixes, use_container_width=True)
 
-# ==============================================================
+
 # PAGE 2: INDIVIDUAL CUSTOMERS
-# ==============================================================
+
 elif page == "Individual Customers":
     st.header("Individual Customer Analysis")
 
