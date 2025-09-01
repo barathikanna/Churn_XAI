@@ -1,5 +1,4 @@
-
-##E-commerce Customer Churn Prediction with Explainable AI
+E-commerce Customer Churn Prediction with Explainable AI
 
 This repository contains the full pipeline and assets for the dissertation project:
 
