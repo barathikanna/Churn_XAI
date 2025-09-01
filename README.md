@@ -8,7 +8,7 @@ The project combines **machine learning, causal inference, and explainable AI (X
 
 
 
-##Features
+Features
 
 * **Synthetic Dataset Generation** using a causal DAG with loyalty, discounts, churn, and review text.
 * **Models**:
@@ -26,19 +26,16 @@ The project combines **machine learning, causal inference, and explainable AI (X
 
 * **Deployment**: Interactive **Streamlit dashboard**.
 
-
-## Repository Structure
-
+repository structure
 
 ├── data/                  # Dataset and preprocessing outputs
 │   └── causal_discount_churn_DAG_clean.csv
 ├── notebooks/             # Jupyter notebooks for data generation and experiments
-|
+├── results/               # contains all the result output and files
 ├── dashboard/             # Streamlit app code (app.py and supporting files)
-├── result/              # Supporting material (formulas, configs, reports)
+├
 ├── requirements.txt       # Dependencies for reproducibility
-└── README.md              # Project documentation (this file)
-
+└── README.md              # Project documentation 
 
 ## System Requirements
 
