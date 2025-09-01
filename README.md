@@ -1,59 +1,158 @@
-# 1. synthetic dataset generation and causal estimation validation using DoWhy
-- This project demonstrates a complete pipeline for generating a synthetic customer churn dataset with known causal structure, estimating the treatment effect using DoWhy, and training interpretable models for churn prediction.
 
-## 1.1. Synthetic Dataset Generation
+##E-commerce Customer Churn Prediction with Explainable AI
 
-    - Created a synthetic dataset of 10,000 customers with the following features:
-      - `age`, `gender`, `visits_last_month`, `avg_purchase_value`
-      - Confounder: `loyalty_score`
-      - Treatment: `discount_offer`
-      - Outcome: `churned`
-      - Counterfactual outcome: `counterfactual_churned`
-      - Natural language reviews (`complaint_text`) generated from causal variables
+This repository contains the full pipeline and assets for the dissertation project:
 
-    - The data is causally valid: `loyalty_score` influences both treatment and outcome.
-    - The outcome (`churned`) was simulated using a do-calculus inspired process, not conditional probability.
+**"A Multimodal Explainable AI Framework for Customer Churn Prediction in E-commerce"**
 
-    > Code: See `dataset.ipynb`
+The project combines **machine learning, causal inference, and explainable AI (XAI)** to predict customer churn and provide **transparent insights** for managers. It also includes a **Streamlit dashboard** for interactive exploration.
+
+
+
+##Features
+
+* **Synthetic Dataset Generation** using a causal DAG with loyalty, discounts, churn, and review text.
+* **Models**:
+  * Logistic Regression (structured only)
+  * XGBoost (structured + unstructured reviews)
+
+* **Imbalance Handling**: Stratified sampling + SMOTE oversampling.
+
+* **Evaluation Metrics**: Accuracy, Precision, Recall, F1-score, ROC-AUC.
+
+* **Interpretability**:
+  * **SHAP**: Global feature attribution
+  * **LIME**: Local case-by-case explanations
+  * **DiCE**: Counterfactual recommendations
+
+* **Deployment**: Interactive **Streamlit dashboard**.
+
+
+## Repository Structure
+
+
+├── data/                  # Dataset and preprocessing outputs
+│   └── causal_discount_churn_DAG_clean.csv
+├── notebooks/             # Jupyter notebooks for data generation and experiments
+|
+├── dashboard/             # Streamlit app code (app.py and supporting files)
+├── result/              # Supporting material (formulas, configs, reports)
+├── requirements.txt       # Dependencies for reproducibility
+└── README.md              # Project documentation (this file)
+
+
+## System Requirements
+
+* **Python**: 3.10
+* **Core Libraries**: NumPy, Pandas, Scikit-learn, XGBoost, Imbalanced-learn
+* **Interpretability**: SHAP, LIME, DiCE
+* **Causal Inference**: DoWhy
+* **NLP**: scikit-learn TF-IDF
+* **Deployment**: Streamlit
+* **Development Environment**: Jupyter Notebook
+
+
+
+## Installation
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+
+
+## Reproducing the Pipeline
+
+### Step 1: Generate Dataset
+
+The dataset is created using a **causal DAG** (loyalty → discount → churn).
+Run the dataset generation notebook:
+
+dataset_generation.ipynb
+
+
+This will produce:
+`data/causal_discount_churn_DAG_clean.csv`
 
 ---
 
-## 1.2. Causal Estimation with DoWhy
-    - Used `dowhy` to:
-    - Identify the Average Treatment Effect (ATE) of `discount_offer` on `churned`
-    - Adjust for confounding using backdoor criterion
-    - Refute the estimate with a placebo treatment test
+### Step 2: Train Models
 
-        ### Key Output:
-        Estimated ATE: -0.1849
-        Interpretation: Discounts reduce churn by ~18.5%
-        Placebo Effect: -0.00178 (non-significant)
-    > causal effect is robust and not due to random correlations.
+Two models are trained:
 
-    > Code: See `DoWhy.ipynb`
+* **Logistic Regression** → structured features only
+* **XGBoost** → structured + TF-IDF review features
+
+Run:
+
+model_training.ipynb
 
 
-# 2. ML Model for churn prediction: 
+---
 
-## 2.1 Linear Regression Model for DiCE (Structured data only)
-    - Trained an interpretable model using only structured features (DiCE-compatible)
-    - Included `class_weight='balanced'` to handle imbalance
-    - Evaluated on accuracy, precision, recall, F1, and ROC AUC
+### Step 3: Evaluate Models
 
-    ### Without Class Balancing:
-        - Precision/Recall: 0.00 (model ignored churners)
+Model performance is assessed with multiple metrics:
 
-    ### With Class Balancing:
-        - Accuracy : 55.85%
-        - Precision : 39.53%
-        - Recall : 71.29%
-        - F1 Score : 50.86%
-        - ROC AUC Score : 61.95%
+* **Logistic Regression (structured only)**
+* **XGBoost (structured only)**
+* **XGBoost (structured + reviews)**
 
-    > Accuracy dropped but recall improved dramatically
+Outputs include classification reports, ROC curves, and comparison tables.
 
-    > Code: See `LR_DiCE.ipynb`
-    
-## 2.2 XGBoost
+---
 
-To Be Updated
+### Step 4: Interpretability
+
+
+interpretability.ipynb
+
+
+This generates:
+
+* **SHAP summary plots** (global drivers of churn)
+* **LIME explanations** (local predictions)
+* **DiCE counterfactuals** (actionable suggestions)
+
+---
+
+### Step 5: Launch Dashboard
+
+The Streamlit dashboard integrates everything into one interface.
+
+Run:
+
+```bash
+cd dashboard
+streamlit run app.py
+```
+
+Dashboard modules:
+
+* **Customer Input Panel** → enter attributes + reviews
+* **Prediction Panel** → churn probability + binary output
+* **Global Insights** → SHAP plots
+* **Local Explanations** → LIME plots
+* **Counterfactual Suggestions** → DiCE recommendations
+
+---
+
+
+## Usage Example
+
+1. Generate dataset with synthetic reviews.
+2. Train XGBoost with TF-IDF.
+3. Evaluate with ROC-AUC and F1-score.
+4. Interpret churn cases with LIME.
+5. Use dashboard to explore customer churn in real-time.
+
+---
+
+
+
+
+
+
+
