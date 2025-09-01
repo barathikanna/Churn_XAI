@@ -61,7 +61,7 @@ pip install -r requirements.txt
 
 ## Reproducing the Pipeline
 
-### Step 1: Generate Dataset
+Step 1: Generate Dataset
 
 The dataset is created using a **causal DAG** (loyalty → discount → churn).
 Run the dataset generation notebook:
@@ -74,7 +74,7 @@ This will produce:
 
 ---
 
-### Step 2: Train Models
+Step 2: Train Models
 
 Two models are trained:
 
@@ -88,7 +88,7 @@ model_training.ipynb
 
 ---
 
-### Step 3: Evaluate Models
+Step 3: Evaluate Models
 
 Model performance is assessed with multiple metrics:
 
@@ -100,7 +100,7 @@ Outputs include classification reports, ROC curves, and comparison tables.
 
 ---
 
-### Step 4: Interpretability
+Step 4: Interpretability
 
 
 interpretability.ipynb
@@ -114,7 +114,7 @@ This generates:
 
 ---
 
-### Step 5: Launch Dashboard
+Step 5: Launch Dashboard
 
 The Streamlit dashboard integrates everything into one interface.
 
@@ -136,7 +136,7 @@ Dashboard modules:
 ---
 
 
-## Usage Example
+Usage Example
 
 1. Generate dataset with synthetic reviews.
 2. Train XGBoost with TF-IDF.
@@ -145,10 +145,3 @@ Dashboard modules:
 5. Use dashboard to explore customer churn in real-time.
 
 ---
-
-
-
-
-
-
-
