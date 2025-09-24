@@ -1,0 +1,13 @@
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = true
+port = 8501
+maxUploadSize = 1028  # MB, adjust if your datasets are large
+
+[theme]
+primaryColor = "#4CAF50"           # green for KPIs
+backgroundColor = "#FFFFFF"        # white background
+secondaryBackgroundColor = "#F5F5F5"
+textColor = "#262730"
+font = "sans serif"
